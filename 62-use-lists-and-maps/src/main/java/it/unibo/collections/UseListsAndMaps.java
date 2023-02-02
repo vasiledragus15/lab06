@@ -1,5 +1,9 @@
 package it.unibo.collections;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,19 +25,33 @@ public final class UseListsAndMaps {
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
          * from 1000 (included) to 2000 (excluded).
          */
+            List<Integer> alist = new ArrayList<>();
+
+            for (int i = 1000; i < 2000 ; i++) {
+                alist.add(i);
+            }
+
         /*
          * 2) Create a new LinkedList<Integer> and, in a single line of code
          * without using any looping construct (for, while), populate it with
          * the same contents of the list of point 1.
          */
+            List<Integer> llist = new LinkedList<>();
+            Collections.copy(llist, alist);
         /*
          * 3) Using "set" and "get" and "size" methods, swap the first and last
          * element of the first list. You can not use any "magic number".
          * (Suggestion: use a temporary variable)
          */
+            int tmp = alist.get(0);
+            alist.set(0, alist.get(alist.size()));
+            alist.set(alist.size(), tmp);
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
          */
+            for (Integer i : alist) {
+                System.out.println(i);
+            }
         /*
          * 5) Measure the performance of inserting new elements in the head of
          * the collection: measure the time required to add 100.000 elements as
