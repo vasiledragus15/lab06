@@ -1,8 +1,6 @@
 package it.unibo.collections;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +10,9 @@ import java.util.Map;
  *
  */
 public final class UseListsAndMaps {
+
+    private static final int START = 1_000;
+    private static final int END = 2_000;
 
     private UseListsAndMaps() {
     }
@@ -27,25 +28,27 @@ public final class UseListsAndMaps {
          */
             List<Integer> alist = new ArrayList<>();
 
-            for (int i = 1000; i < 2000 ; i++) {
+            for (int i = START; i < END ; i++) {
                 alist.add(i);
             }
+            System.out.println(alist);
 
         /*
          * 2) Create a new LinkedList<Integer> and, in a single line of code
          * without using any looping construct (for, while), populate it with
          * the same contents of the list of point 1.
          */
-            List<Integer> llist = new LinkedList<>();
-            Collections.copy(llist, alist);
+            List<Integer> llist = new LinkedList<>(alist);
+            System.out.println(llist);
         /*
          * 3) Using "set" and "get" and "size" methods, swap the first and last
          * element of the first list. You can not use any "magic number".
          * (Suggestion: use a temporary variable)
          */
-            int tmp = alist.get(0);
-            alist.set(0, alist.get(alist.size()));
-            alist.set(alist.size(), tmp);
+            int el = alist.get(0);
+            alist.set(0, alist.get(alist.size()-1));
+            alist.set(alist.size()-1, el);
+            System.out.println("First element: " + alist.get(0) + " Last element: " + alist.get(alist.size()-1));
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
          */
