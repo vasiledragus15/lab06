@@ -44,7 +44,7 @@ public final class UseListsAndMaps {
          * 3) Using "set" and "get" and "size" methods, swap the first and last
          * element of the first list. You can not use any "magic number".
          * (Suggestion: use a temporary variable)
-         */
+         */ 
             int el = alist.get(0);
             alist.set(0, alist.get(alist.size()-1));
             alist.set(alist.size()-1, el);
@@ -52,9 +52,13 @@ public final class UseListsAndMaps {
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
          */
+            StringBuilder builder = new StringBuilder();
             for (Integer i : alist) {
-                System.out.println(i);
+                builder.append(i);
+                builder.append(" ");
             }
+
+            System.out.println(builder);
         /*
          * 5) Measure the performance of inserting new elements in the head of
          * the collection: measure the time required to add 100.000 elements as
