@@ -1,0 +1,22 @@
+# Gradle
+build/
+bin/
+.gradle
+gradle.prefs
+gradle.xml
+
+# MacOS
+.DS_Store
+
+# Java
+.mtj.tmp/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+
+
