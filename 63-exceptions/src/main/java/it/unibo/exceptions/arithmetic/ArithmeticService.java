@@ -55,6 +55,7 @@ public final class ArithmeticService {
      * @return the result of the process
      */
     public String process() {
+        try {
         if (commandQueue.isEmpty()) {
             throw new IllegalStateException("No commands sent, no result available");
         }
@@ -78,21 +79,24 @@ public final class ArithmeticService {
                     }
                     computeAt(nextOp);
                 } else if (commandQueue.size() > 1) {
-                    throw new IllegalStateException("Inconsistent operation: " + commandQueue);
+                        throw new IllegalStateException("Inconsistent state: " + commandQueue);
                 }
             }
         }
         final var finalResult = commandQueue.get(0);
         final var possibleException = nullIfNumberOrException(finalResult);
         if (possibleException != null) {
-            throw new IllegalStateException("Invalid result of operation: " + finalResult);
+                throw new IllegalStateException("Invalid result of operation: " + finalResult, possibleException);
         }
         return finalResult;
         /*
          * The commandQueue should be cleared, no matter what, when the method exits
          * But how?
          */
-    }
+        } finally {
+            commandQueue.clear();
+        }
+    } 
 
     private void computeAt(final int operatorIndex) {
         if (operatorIndex == 0) {
