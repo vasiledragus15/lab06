@@ -57,6 +57,7 @@ public final class ArithmeticService {
     public String process() {
         if (commandQueue.isEmpty()) {
             System.out.println("No commands sent, no result available");
+            throw new IllegalStateException("No commands sent, no result available");
         }
         while (commandQueue.size() != 1) {
             final var nextMultiplication = commandQueue.indexOf(TIMES);
