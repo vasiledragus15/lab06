@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 
 import static java.util.concurrent.TimeUnit.NANOSECONDS;
 
@@ -14,6 +14,7 @@ import static java.util.concurrent.TimeUnit.NANOSECONDS;
  */
 public final class UseListsAndMaps {
 
+    private static final int READ = 1_000;
     private static final int ELEMS = 100_000;
     private static final int START = 1_000;
     private static final int END = 2_000;
@@ -94,6 +95,20 @@ public final class UseListsAndMaps {
          * LinkedList, using the collections of point 5. In order to measure
          * times, use as example PerfTest.java.
          */
+            time = System.nanoTime();
+            for (int i = 0; i < READ; i++) {
+                alist.get(alist.size() / 2);
+            }
+            time = System.nanoTime() - time;
+            System.out.println("Reading " + READ + " elements in the middle of an ArrayList took " + timeAsString(time));
+
+            time = System.nanoTime();
+            for (int i = 0; i < READ; i++) {
+                llist.get(llist.size() / 2 );
+            }
+            time = System.nanoTime() - time;
+            System.out.println("Reading " + READ + " elements in the middle of a LinkedList took " + timeAsString(time));
+
         /*
          * 7) Build a new Map that associates to each continent's name its
          * population:
