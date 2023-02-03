@@ -59,7 +59,7 @@ public final class UseListsAndMaps {
             StringBuilder builder = new StringBuilder();
             for (Integer i : alist) {
                 builder.append(i);
-                builder.append(" ");
+                builder.append(", ");
             }
 
             System.out.println(builder);
