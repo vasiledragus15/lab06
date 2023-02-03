@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static java.util.concurrent.TimeUnit.NANOSECONDS;
+
 /**
  * Example class using {@link List} and {@link Map}.
  *
@@ -69,36 +71,19 @@ public final class UseListsAndMaps {
          * TestPerformance.java.
          */
             long time = System.nanoTime();
-
-            for (int i = 1; i <= ELEMS; i++) {
-                alist.add(i);
+            for (int i = 0; i <= ELEMS; i++) {
+                alist.add(0, i);
             }
-
             time = System.nanoTime() - time;
-            final var millis = TimeUnit.NANOSECONDS.toMillis(time);
-            System.out.println(
-                "Converting "
-                    + alist.size()
-                    + " ints to String and inserting them in an ArrayList took "
-                    + time
-                    + "ns ("
-                    + millis
-                    + "ms)"
-            ); 
-
-            for (int i = 1; i <= ELEMS; i++) {
+            System.out.println("Inserting " + ELEMS + " elements as first in an ArrayList took " + timeAsString(time));
+            
+            time = System.nanoTime();
+            for (int i = 0; i <= ELEMS; i++) {
                 llist.add(0, i);
             }
+            time = System.nanoTime() - time;
+            System.out.println("Inserting " + ELEMS + " elements as first in a LinkedList took " + timeAsString(time));
             
-            System.out.println(
-                "Converting "
-                    + alist.size()
-                    + " ints to String and inserting them in an LinkedList took "
-                    + time
-                    + "ns ("
-                    + millis
-                    + "ms)"
-            );
             
         /*
          * 6) Measure the performance of reading 1000 times an element whose
@@ -126,4 +111,9 @@ public final class UseListsAndMaps {
          * 8) Compute the population of the world
          */
     }
+
+    private static String timeAsString(final long nanoseconds) {
+        return nanoseconds + "ns (" + NANOSECONDS.toMillis(nanoseconds) + "ms)";
+    }  
+
 }
