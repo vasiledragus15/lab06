@@ -61,6 +61,9 @@ public final class UseListsAndMaps {
                 builder.append(i);
                 builder.append(", ");
             }
+            if (builder.length() > 0) {
+                builder.delete(builder.length() - 2, builder.length());
+            }
 
             System.out.println(builder);
         /*
