@@ -146,7 +146,7 @@ public final class UseListsAndMaps {
         for (Map.Entry<String, Long>  entry : world.entrySet()) {
             worldPop += entry.getValue();
         }
-        System.out.println(worldPop);
+        System.out.println("We are ~" + String.format("%,d", worldPop) + " people in the world!");
 
     }
 
