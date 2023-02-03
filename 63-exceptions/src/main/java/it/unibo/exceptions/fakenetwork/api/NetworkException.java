@@ -4,14 +4,11 @@ import java.io.IOException;
 
 public class NetworkException extends IOException {
 
-    private final String s;
-        public NetworkException() {
-            super();
-        }
+    public NetworkException() {
+        super("Network error: no response");
+    }
 
-        public NetworkComponent (final String s ) {
-            super();
-            
-
-        }
+    public NetworkException (final String message ) {
+        super("Network error: no response" + message);
+    }
 }
