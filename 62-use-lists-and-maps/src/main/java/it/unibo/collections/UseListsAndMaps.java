@@ -43,7 +43,7 @@ public final class UseListsAndMaps {
             for (int i = START; i < END ; i++) {
                 alist.add(i);
             }
-            System.out.println(alist);
+            log(alist);
 
         /*
          * 2) Create a new LinkedList<Integer> and, in a single line of code
@@ -51,7 +51,7 @@ public final class UseListsAndMaps {
          * the same contents of the list of point 1.
          */
             List<Integer> llist = new LinkedList<>(alist);
-            System.out.println(llist);
+            log(llist);
         /*
          * 3) Using "set" and "get" and "size" methods, swap the first and last
          * element of the first list. You can not use any "magic number".
@@ -60,7 +60,7 @@ public final class UseListsAndMaps {
             int el = alist.get(0);
             alist.set(0, alist.get(alist.size()-1));
             alist.set(alist.size()-1, el);
-            System.out.println("First element: " + alist.get(0) + " Last element: " + alist.get(alist.size()-1));
+            log("First element: " + alist.get(0) + " Last element: " + alist.get(alist.size()-1));
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
          */
@@ -73,7 +73,7 @@ public final class UseListsAndMaps {
                 builder.delete(builder.length() - 2, builder.length());
             }
 
-            System.out.println(builder);
+            log(builder);
         /*
          * 5) Measure the performance of inserting new elements in the head of
          * the collection: measure the time required to add 100.000 elements as
@@ -86,14 +86,14 @@ public final class UseListsAndMaps {
                 alist.add(0, i);
             }
             time = System.nanoTime() - time;
-            System.out.println("Inserting " + ELEMS + " elements as first in an ArrayList took " + timeAsString(time));
+            log("Inserting " + ELEMS + " elements as first in an ArrayList took " + timeAsString(time));
             
             time = System.nanoTime();
             for (int i = 0; i <= ELEMS; i++) {
                 llist.add(0, i);
             }
             time = System.nanoTime() - time;
-            System.out.println("Inserting " + ELEMS + " elements as first in a LinkedList took " + timeAsString(time));
+            log("Inserting " + ELEMS + " elements as first in a LinkedList took " + timeAsString(time));
             
             
         /*
@@ -107,14 +107,14 @@ public final class UseListsAndMaps {
                 alist.get(alist.size() / 2);
             }
             time = System.nanoTime() - time;
-            System.out.println("Reading " + READ + " elements in the middle of an ArrayList took " + timeAsString(time));
+            log("Reading " + READ + " elements in the middle of an ArrayList took " + timeAsString(time));
 
             time = System.nanoTime();
             for (int i = 0; i < READ; i++) {
                 llist.get(llist.size() / 2 );
             }
             time = System.nanoTime() - time;
-            System.out.println("Reading " + READ + " elements in the middle of a LinkedList took " + timeAsString(time));
+            log("Reading " + READ + " elements in the middle of a LinkedList took " + timeAsString(time));
 
         /*
          * 7) Build a new Map that associates to each continent's name its
@@ -146,7 +146,7 @@ public final class UseListsAndMaps {
         for (Map.Entry<String, Long>  entry : world.entrySet()) {
             worldPop += entry.getValue();
         }
-        System.out.println("We are ~" + String.format("%,d", worldPop) + " people in the world!");
+        System.out.println("There is ~" + String.format("%,d", worldPop) + " people in the world!");
 
     }
 
@@ -154,4 +154,7 @@ public final class UseListsAndMaps {
         return nanoseconds + "ns (" + NANOSECONDS.toMillis(nanoseconds) + "ms)";
     }  
 
+    private static void log(final Object message) {
+        System.out.println(message);
+    }
 }
